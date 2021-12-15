@@ -148,3 +148,6 @@ unsplash-dataset/**/*.npy
 # Serverless
 .serverless
 node_modules
+
+# Salvatore dataset
+featurescoop_salvatore
