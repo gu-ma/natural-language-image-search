@@ -56,7 +56,7 @@ class EncodeText(Resource):
         txt = request.args.get('text')
 
         if txt:
-            encode_text(txt)
+            text_features = encode_text(txt)
             results = text_features[0].tolist()
 
         else:
