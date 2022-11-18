@@ -1,0 +1,1 @@
+docker run -p 5001:5001 -it --rm -v C:\Users\admin\Documents\applications\natural-language-image-search:/scratch clip_img_search:latest bash -c "(cd /scratch/ && python api.py)"
