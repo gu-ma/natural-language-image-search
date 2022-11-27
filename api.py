@@ -51,6 +51,7 @@ class GetClosest(Resource):
     def get(self):
 
         txt = request.args.get("text")
+        num = int(request.args.get('num')) if request.args.get('num') else 10
 
         if txt:
             text_features = encode_text(txt)
@@ -64,9 +65,9 @@ class GetClosest(Resource):
                 key=lambda x: x[0],
                 reverse=True,
             )
-            # for p in best_photos[:10]:
+            # for p in best_photos[:num]:
             #     print(type(p), [str(p[0]), str(p[1])])
-            results = best_photos[:10]
+            results = best_photos[:num]
 
         else:
             results = "Missing arguments"
