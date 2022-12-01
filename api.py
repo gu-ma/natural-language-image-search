@@ -17,7 +17,7 @@ def encode_text(txt):
     with torch.no_grad():
 
         # Encode and normalize the description using CLIP
-        text_encoded = model.encode_text(clip.tokenize(txt).to(device))
+        text_encoded = model.encode_text(clip.tokenize(txt, truncate=True).to(device))
         text_encoded /= text_encoded.norm(dim=-1, keepdim=True)
 
         # Retrieve the description vector and the photo vectors
@@ -51,7 +51,7 @@ class GetClosest(Resource):
     def get(self):
 
         txt = request.args.get("text")
-        num = int(request.args.get('num')) if request.args.get('num') else 10
+        num = int(request.args.get("num")) if request.args.get("num") else 10
 
         if txt:
             text_features = encode_text(txt)
